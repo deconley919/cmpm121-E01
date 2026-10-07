@@ -24,22 +24,18 @@
       { name: "Teal", color: "#248a87" },
     ];
     let activeColorIndex = 0;
-    let updates_enabled = true;
     const label = document.querySelector("#label");
     const swatch = document.querySelector("#swatch");
 
     function update() {
-      if (updates_enabled) {
-        let item = colorList[0];
-        for (let i = 0; i < colorList.length; i++) {
-          if (i === activeColorIndex) item = colorList[i];
-        }
-        label.textContent = item.name;
-        swatch.style.backgroundColor = item.color;
-      } else {
-        console.log("ignored update while updates are disabled");
+      let item = colorList[0];
+      for (let i = 0; i < colorList.length; i++) {
+        if (i === activeColorIndex) item = colorList[i];
       }
+      label.textContent = item.name;
+      swatch.style.backgroundColor = item.color;
     }
+    
 
     document.querySelector("#next").addEventListener("click", () => {
       activeColorIndex = (activeColorIndex + 1) % colorList.length;
